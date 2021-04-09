@@ -1,0 +1,14 @@
+<h2>Mes Pokemons</h2>
+    <ul class="pokemons">
+      <mat-nav-list infiniteScroll 
+      [infiniteScrollDistance]="2"
+      [infiniteScrollThrottle]="50"
+      (scrolled)="onScroll()"  *ngFor="let pokemon of pokemons?.data" > 
+        <a [routerLink]="['detail', pokemon.id]">
+       <mat-list-item> 
+         <img pokemonsprites src="assets/img/sprites/{{pokemon.id}}.png"  width="50" height="50">
+         <span class="badge">{{pokemon.id}} . {{pokemon.name}} </span> 
+       </mat-list-item>
+        </a>
+      </mat-nav-list>
+</ul>
