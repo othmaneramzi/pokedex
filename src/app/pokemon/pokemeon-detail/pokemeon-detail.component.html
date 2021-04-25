@@ -1,5 +1,5 @@
-<h2>detail de {{pokemon.name}}</h2>
-<a routerLink=""><button> Liste des pokemons</button></a>
+
+<ng-container *ngIf=pokemon>
 <mat-card class="pokemon-card">
     <mat-grid-list cols="2" rowHeight="200px">
       <mat-grid-tile>
@@ -40,3 +40,7 @@
       </mat-grid-tile>
     </mat-grid-list>
   </mat-card>
+</ng-container>
+
+  
+    

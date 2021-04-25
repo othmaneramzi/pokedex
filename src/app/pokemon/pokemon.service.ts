@@ -8,6 +8,7 @@ import { catchError, map, tap } from 'rxjs/operators';
 import { of } from 'rxjs';
 import { pokemonModele } from '../pokemon/modele/pokemonModele';
 import {Pokemon} from '../pokemon/modele/pokemon'
+import { PokemeonDetailComponent } from './pokemeon-detail/pokemeon-detail.component';
 
 
 @Injectable({
@@ -16,7 +17,7 @@ import {Pokemon} from '../pokemon/modele/pokemon'
 export class PokemonService {
 
   private pokemonUrl = 'http://app-ec21e68e-3e55-42d7-b1ae-3eef7507a353.cleverapps.io/pokemons'
-  private complementUrl ='?offset=0&limit=150'
+
 
   constructor(private http: HttpClient) { 
 
@@ -42,7 +43,16 @@ export class PokemonService {
     );
   }
 
-  getPokemonById(id: string | null): Observable<any> {
+  getPokemonById(id: String): Observable<any> {
     return this.http.get<any>(this.pokemonUrl +'/'+id);
   }
+
+  getPokemonsSearch(search:string): Observable<pokemonModele> {
+    return this.http.get<pokemonModele>(this.pokemonUrl + "?search=" + search)
+      .pipe(
+        catchError(this.handleError<pokemonModele>("getPokemons"))
+      )
+  }
+
+ 
 }

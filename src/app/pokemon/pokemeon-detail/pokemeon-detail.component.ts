@@ -10,8 +10,9 @@ import { PokemonService } from '../pokemon.service';
 export class PokemeonDetailComponent implements OnInit {
   pokemon: any;
   private audio: HTMLMediaElement;
+
   constructor(private pokemonService: PokemonService, private route: ActivatedRoute) { 
-   
+    
   }
 
   ngOnInit(): void {
